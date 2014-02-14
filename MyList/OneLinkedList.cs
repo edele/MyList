@@ -25,8 +25,54 @@ namespace MyList
 		{
 			head = tail = null;
 		}
+
+        // индексатор
+        public T this[int index]
+        {
+            get 
+            {
+                var cur = head;
+                int i = 0;
+                while (i < index)
+                {
+                    cur = cur.Next;
+                    i++;
+                }
+                return cur.Content;
+            }
+            set
+            {
+                var cur = head;
+                int i = 0;
+                while (i < index)
+                {
+                    cur = cur.Next;
+                    i++;
+                }
+                cur.Content = value;
+            }
+        }
+
 		// добавляем функционал
-		
+
+        public void Remove(T val)
+        {
+            //удаляем элемент
+            var node = head;
+            var prev = head;
+            while (node != null)
+            {
+                if (node.Content.Equals(val))
+                {
+                    // удаляем и выходим
+                    prev.Next = node.Next;
+                    return;
+                }
+                prev = node;
+                node = node.Next;
+            }
+        }
+
 		public void Add(T val)
 		{
 			// 1) - новый узел
@@ -47,6 +93,7 @@ namespace MyList
 		{
 			return new MyIterator<T>(this);
 		}
+
         public class MyIterator<T> : IEnumerator
         {
             private OneLinkedList<T> list;
@@ -62,26 +109,22 @@ namespace MyList
                 get { return this.cur.Content; }
             }
             public bool MoveNext()
-        {
-            if (cur == null)
-            {
-                cur = this.list.head;
-                return true;
-            }
-            cur = cur.Next;
-            if (cur == null)
+            {   
+               if (cur == null)
+                {
+                    cur = this.list.head;
+                    return true;
+                }
+                cur = cur.Next;
+                if (cur == null)
                 return false;
-            else return true;
-        }
+                else return true;
+            }
             public void Reset()
             {
                 cur = null;
             }
-            public void Remove(T val)
-            {
-                //удаляем элемент
-
-            }
+            
         } //MyIterator
 	}
 }
