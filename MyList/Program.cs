@@ -27,11 +27,11 @@ namespace MyList
             Console.WriteLine();
             list[3] = "good bye";
 
-
 			foreach (var s in list) 
 			{
 				Console.WriteLine(s);
             }
+            Console.WriteLine("COUNT:" + list.Count.ToString());
 
             Console.WriteLine();
             list.Remove("как дела");

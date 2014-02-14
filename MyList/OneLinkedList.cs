@@ -19,8 +19,8 @@ namespace MyList
 		// голова списка
 		protected Node<T> head;
 		// хвост
-		protected Node<T> tail;		
-		
+		protected Node<T> tail;
+
 		public OneLinkedList()
 		{
 			head = tail = null;
@@ -89,6 +89,26 @@ namespace MyList
 			tail = node;
 		}
 		
+        public int Count
+        {
+            get
+            {
+                var cur = head;
+                int i = 1;
+                while (cur.Next!=null)
+                {
+                    cur = cur.Next;
+                    i++;
+                }
+                return i;
+            }
+        }
+
+        public void Insert(int n, string val) 
+        {
+
+        }
+
 		public IEnumerator GetEnumerator()
 		{
 			return new MyIterator<T>(this);
@@ -108,6 +128,7 @@ namespace MyList
             {
                 get { return this.cur.Content; }
             }
+
             public bool MoveNext()
             {   
                if (cur == null)
@@ -120,6 +141,7 @@ namespace MyList
                 return false;
                 else return true;
             }
+
             public void Reset()
             {
                 cur = null;
