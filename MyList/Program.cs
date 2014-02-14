@@ -40,7 +40,7 @@ namespace MyList
             {
                 Console.WriteLine(s);
             }
-            Console.WriteLine("\r\nДЗ: Добавить методы Instert(n,val), RemoveAt(i), RemoveAll(entry)");
+            Console.WriteLine("\nДЗ: Добавить методы: \n\tInstert(n,val), \n\tRemoveAt(i), \n\tRemoveAll(entry)\nи свойство\n\tCount");
 			Console.ReadKey(true);
 		}
 	}
