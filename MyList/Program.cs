@@ -14,7 +14,9 @@ namespace MyList
 	{
 		public static void Main(string[] args)
 		{
-			var list = new OneLinkedList<string>();
+
+            var list = new OneLinkedList<string>();
+            list.Add("пашка");
 			list.Add("привет");
 			list.Add("как дела");
 			list.Add("хорошо");

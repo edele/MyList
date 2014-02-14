@@ -77,6 +77,11 @@ namespace MyList
             {
                 cur = null;
             }
-        }
+            public void Remove(T val)
+            {
+                //удаляем элемент
+
+            }
+        } //MyIterator
 	}
 }
