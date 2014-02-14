@@ -23,7 +23,9 @@ namespace MyList
 			list.Add("пока");
 
             string st = list[0];
-            list[1] = "good bye";
+            Console.WriteLine("get=" + st);
+            Console.WriteLine();
+            list[3] = "good bye";
 
 
 			foreach (var s in list) 
