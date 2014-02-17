@@ -54,7 +54,6 @@ namespace MyList
         }
 
 		// добавляем функционал
-
         public void Remove(T val)
         {
             //удаляем элемент
@@ -71,6 +70,62 @@ namespace MyList
                 prev = node;
                 node = node.Next;
             }
+        }
+
+        public void RemoveAt(int index)
+        {
+            //удаляем элемент
+            var node = head;
+            var prev = head;
+            int i = 0;
+            while (i < index)
+            {
+                prev = node;
+                node = node.Next;
+                i++;
+            }
+            prev.Next = node.Next;
+            return;
+        }
+
+        public void RemoveAll(string entry)
+        {
+            var node = head;
+            var prev = head;
+            while (node != null)
+            {
+                if (node.Content.ToString().Contains(entry))
+                {
+                    if (node==head)
+                    {
+                        head = node.Next;
+                    }
+                    else
+                    {
+                        prev.Next = node.Next;
+                        node = node.Next;
+                    }
+                    continue;
+                }
+                prev = node;
+                node = node.Next;
+            }
+        }
+
+        public void InsertAt(int n)
+        {
+            //удаляем элемент
+            var node = head;
+            var prev = head;
+            int i = 0;
+            while (i < n)
+            {
+                prev = node;
+                node = node.Next;
+                i++;
+            }
+            prev.Next = node.Next;
+            return;
         }
 
 		public void Add(T val)
@@ -104,9 +159,33 @@ namespace MyList
             }
         }
 
-        public void Insert(int n, string val) 
-        {
 
+        public void Insert(int n, T val)
+        {
+            var newNode = new Node<T>(val);
+            var node = head;
+            var prev = head;
+            int i = 0;
+
+            while (i+1 < n)
+            {
+                prev = node;
+                node = node.Next;
+                i++;
+            }
+
+            if (n == 0)
+            {
+                head = newNode;
+                newNode.Next = node;
+            }
+            else
+            {
+                
+                newNode.Next = node.Next;
+                node.Next = newNode;
+            }
+            return;
         }
 
 		public IEnumerator GetEnumerator()
